@@ -1,7 +1,7 @@
 {
   "name": "arrrweb3",
   "namespace": "pirate",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Pirate JavaScript API comunicating to runebase node over RPC",
   "main": "./src/index.js",
   "repository": {
