@@ -1,0 +1,36 @@
+language: node_js
+
+node_js:
+  - "16"
+
+env:
+  - CXX=g++-4.8 PIRATE_RPC_ADDRESS='http://pirate:pirate@localhost:13889' SENDER_ADDRESS='qMZK8FNPRm54jvTLAGEs1biTCgyCkcsmna' WALLET_PASSPHRASE='bodhi'
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+
+cache:
+  directories:
+    - "node_modules"
+
+before_install:
+  - wget https://github.com/PirateNetwork/pirate/releases/download/v5.3.1/pirate-cli-ubuntu1804-v5.3.1.zip
+
+install:
+  - mkdir pirate
+  - unzip pirate-cli-ubuntu1804-v5.3.1.zip -d pirate
+  - npm install
+  - mkdir test/data/.pirate
+
+script:
+  - ./pirate/pirated -testnet -rpcuser=pirate -rpcpassword=pirate -datadir=./test/data/.pirate & 
+  - sleep 10
+  - npm run test:cleanenv
+
+after_failure:
+  - cat /home/travis/build/The-Arrrmy/ARRRweb3.js/test/data/.pirate/testnet3/debug.log
