@@ -101,7 +101,7 @@ class ARRRweb3 {
    * @return {Promise} Success or Error.
    */
   listTransactions(mostRecent) {
-    return this.provider.rawCall('listtransactions', ['*', mostRecent]);
+    return this.provider.rawCall('zs_listtransactions', ['*', mostRecent]);
   }
 
   /**
@@ -185,7 +185,7 @@ class ARRRweb3 {
    * @return {Promise} Promise containing result object or Error
    */
   getTransaction(txid) {
-    return this.provider.rawCall('gettransaction', [txid]);
+    return this.provider.rawCall('zs_gettransaction', [txid]);
   }
 
   /**
