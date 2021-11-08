@@ -11,6 +11,12 @@ Run the following in your project folder:
 
 ## Running Tests
 
+assuming you have nvm installed: https://github.com/nvm-sh/nvm
+```
+nvm i 16
+nvm use 16
+```
+
 clone the repository
 ```
 git clone https://github.com/The-ARRRmy/ARRRweb3.js
