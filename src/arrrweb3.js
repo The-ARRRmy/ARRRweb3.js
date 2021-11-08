@@ -1,4 +1,4 @@
-//const _ = require('lodash');
+// const _ = require('lodash');
 const HttpProvider = require('./httpprovider');
 
 class ARRRweb3 {
@@ -94,6 +94,16 @@ class ARRRweb3 {
   }
 
   /** ******** WALLET ********* */
+  /**
+   * Lists transactions
+   * @param {string} * All accounts
+   * @param {string} mostRecent Number of most recent transactions
+   * @return {Promise} Success or Error.
+   */
+  listTransactions(mostRecent) {
+    return this.provider.rawCall('listtransactions', ['*', mostRecent]);
+  }
+
   /**
    * Backs up the wallet.
    * @param {string} destination The destination directory or file.
