@@ -101,7 +101,7 @@ class ARRRweb3 {
    * @return {Promise} Success or Error.
    */
   listTransactions(mostRecent) {
-    return this.provider.rawCall('zs_listtransactions', [0, 0, 0, mostRecent]);
+    return this.provider.rawCall('zs_listtransactions', [0, 0, mostRecent, 0]);
   }
 
   /**

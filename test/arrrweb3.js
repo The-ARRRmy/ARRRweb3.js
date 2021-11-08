@@ -2,7 +2,7 @@
 const _ = require('lodash');
 const chai = require('chai');
 const path = require('path');
-const bs58 = require('bs58');
+// const bs58 = require('bs58');
 
 const ARRRweb3 = require('../src/arrrweb3');
 const {
@@ -31,6 +31,13 @@ describe('ARRRweb3', () => {
     it('returns true when connected', async () => {
       const connected = await arrrweb3.isConnected();
       assert.isTrue(connected);
+    });
+  });
+
+  describe('listTransactions()', () => {
+    it('returns a list of transactions', async () => {
+      const res = await arrrweb3.listTransactions(1000);
+      assert.isDefined(res);
     });
   });
 
@@ -221,7 +228,6 @@ describe('ARRRweb3', () => {
     });
   });
 
-
   /** ******** UTIL ********* */
   describe('validateAddress()', () => {
     it('returns an object validating the address', async () => {
@@ -276,7 +282,6 @@ describe('ARRRweb3', () => {
     });
   });
 
-
   describe('getAccountAddress()', () => {
     it('returns the account address', async () => {
       const res = await arrrweb3.getAccountAddress('');
@@ -291,7 +296,7 @@ describe('ARRRweb3', () => {
       const res = await arrrweb3.getAddressesByAccount('');
       assert.isDefined(res);
       assert.isArray(res);
-      assert.isTrue(_.every(res, item => item.startsWith('5') || item.startsWith('R')));
+      assert.isTrue(_.every(res, (item) => item.startsWith('5') || item.startsWith('R')));
     });
   });
 
@@ -479,4 +484,3 @@ describe('ARRRweb3', () => {
     });
   });
 });
-/* eslint-enable no-underscore-dangle, max-len */
