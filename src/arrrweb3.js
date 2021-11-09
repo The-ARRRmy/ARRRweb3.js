@@ -1,9 +1,11 @@
 // const _ = require('lodash');
 const HttpProvider = require('./httpprovider');
+const Utils = require('./utils');
 
 class ARRRweb3 {
   constructor(url) {
     this.provider = new HttpProvider(url);
+    this.utils = Utils;
   }
 
   /** ******** MISC ********* */
