@@ -274,14 +274,10 @@ class ARRRweb3 {
    * Lists unspent transaction outputs.
    * @param {string} address Address to send Pirate to.
    * @param {number} amount Amount of Pirate to send.
+   * @param {number} minconf (numeric, optional, default=1) Only use funds with at least this many confirmations.
    * @param {string} comment Comment used to store what the transaction is for.
    * @param {string} commentTo Comment to store name/organization to which you're sending the transaction.
-   * @param {boolean} subtractFeeFromAmount The fee will be deducted from the amount being sent.
-   * @param {boolean} replaceable Allow this transaction to be replaced by a transaction with higher fees via BIP 125.
-   * @param {number} confTarget Confirmation target (in blocks).
-   * @param {string} estimateMode The fee estimate mode, must be one of: "UNSET", "ECONOMICAL", "CONSERVATIVE"
-   * @param {string} senderAddress The Pirate address that will be used to send money from.
-   * @param {boolean} changeToSender Return the change to the sender.
+   * @param {string} subtractFeeFromAmount (boolean, optional, default=false) The fee will be deducted from the amount being sent.The recipient will receive less PIRATE than you enter in the amount field.
    * @return {Promise} Transaction ID or Error
    */
   sendToAddress(
@@ -290,11 +286,6 @@ class ARRRweb3 {
     comment = '',
     commentTo = '',
     subtractFeeFromAmount = false,
-    replaceable = true,
-    confTarget = 6,
-    estimateMode = 'UNSET',
-    senderAddress,
-    changeToSender = false,
   ) {
     return this.provider.rawCall('sendtoaddress', [
       address,
@@ -302,11 +293,6 @@ class ARRRweb3 {
       comment,
       commentTo,
       subtractFeeFromAmount,
-      replaceable,
-      confTarget,
-      estimateMode,
-      senderAddress,
-      changeToSender,
     ]);
   }
 
