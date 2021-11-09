@@ -147,20 +147,20 @@ class Utils {
 
   /**
    * Returns true if given string is valid runebase address
-   * @method isRunebaseAddress
+   * @method isPirateAddress
    * @param {String}
    * @return {Boolean}
    */
-  static isRunebaseAddress(address) {
+  static isPirateAddress(address) {
     if (_.isUndefined(address)) {
       return false;
     }
 
-    if (_.size(address) !== 34) {
+    if (_.size(address) !== 78) {
       return false;
     }
 
-    if (!address.startsWith('5') && !address.startsWith('R')) {
+    if (!address.startsWith('z')) {
       return false;
     }
 

@@ -128,9 +128,6 @@ class ARRRweb3 {
    * @return {Promise} Private key or Error.
    */
   zExportKey(address) {
-    console.log('123');
-    console.log(address);
-    console.log(this.provider.rawCall('z_exportkey', [address]));
     return this.provider.rawCall('z_exportkey', [address]);
   }
 
