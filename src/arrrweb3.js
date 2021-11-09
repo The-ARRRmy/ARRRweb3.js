@@ -136,10 +136,12 @@ class ARRRweb3 {
    * Send ARRR to many
    * @param {string} address The Pirate address to send ARRR from.
    * @param {object} object Object with receiver information. [{"address": "zs127z2s66v207g7t3myxklafv28ecffpxmphv5pdx3he79dr8yaqwze47hy29f4l68kx7fsp5cms2", "amount": 0.1}]
+   * @param {number} (numeric, optional, default=1) Only use funds confirmed at least this many times.
+   * @param {number} (numeric, optional, default=0.0001) The fee amount to attach to this transaction.
    * @return {Promise} Array of unspent transaction outputs or Error
    */
-  zSendMany(address, object) {
-    return this.provider.rawCall('z_sendmany', [address, object]);
+  zSendMany(address, object, minconf = 1, fee = 0.0001) {
+    return this.provider.rawCall('z_sendmany', [address, object, minconf, fee]);
   }
 
   /**
