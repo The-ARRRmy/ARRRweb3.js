@@ -125,6 +125,24 @@ class ARRRweb3 {
   }
 
   /**
+   * Lists all balances
+   * @return {Promise} Array of unspent transaction outputs or Error
+   */
+  zGetBalances() {
+    return this.provider.rawCall('z_getbalances');
+  }
+
+  /**
+   * Send ARRR to many
+   * @param {string} address The Pirate address to send ARRR from.
+   * @param {object} object Object with receiver information. [{"address": "zs127z2s66v207g7t3myxklafv28ecffpxmphv5pdx3he79dr8yaqwze47hy29f4l68kx7fsp5cms2", "amount": 0.1}]
+   * @return {Promise} Array of unspent transaction outputs or Error
+   */
+  zSendMany(address, object) {
+    return this.provider.rawCall('z_sendmany', [address, object]);
+  }
+
+  /**
    * Reveals the private key corresponding to the z_address.
    * @param {string} address The Pirate z_address for the private key.
    * @return {Promise} Private key or Error.
