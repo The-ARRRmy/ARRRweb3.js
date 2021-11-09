@@ -145,6 +145,15 @@ class ARRRweb3 {
   }
 
   /**
+   * Get operation status
+   * @param {array} Array Array with opration Id. ["zs127z2s66v207g7t3myxklafv28ecffpxmphv5pdx3he79dr8yaqwze47hy29f4l68kx7fsp5cms2"]
+   * @return {Promise} Array of operation statusses
+   */
+  zGetOperationStatus(arrr = []) {
+    return this.provider.rawCall('z_getoperationstatus', [arrr]);
+  }
+
+  /**
    * Reveals the private key corresponding to the z_address.
    * @param {string} address The Pirate z_address for the private key.
    * @return {Promise} Private key or Error.
